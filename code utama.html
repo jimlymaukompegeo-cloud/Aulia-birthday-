@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 16th Birthday Aulia Zahra Putri Lesmana! 💖</title>
+  
+  <!-- Fonts & Icons CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --primary-pink: #ff85a1;
+      --soft-pink: #fbb1bd;
+      --light-pastel: #ffe5ec;
+      --warm-bg: #fff0f3;
+      --accent-gold: #f7b267;
+      --text-dark: #4a3e3d;
+      --text-soft: #7a6a69;
+      --shadow: 0 10px 30px rgba(255, 133, 161, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #fff0f3 0%, #ffe5ec 50%, #fbb1bd 100%);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Floating Heart Canvas BG */
+    #heartCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Header & Hero Section */
+    .hero {
+      text-align: center;
+      padding: 40px 20px 20px 20px;
+    }
+
+    .badge-sweet16 {
+      display: inline-block;
+      background: linear-gradient(45deg, #ff85a1, #f7b267);
+      color: white;
+      font-weight: 700;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      box-shadow: 0 5px 15px rgba(255, 133, 161, 0.4);
+      margin-bottom: 15px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #9d0208;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-soft);
+      font-weight: 300;
+      margin-bottom: 30px;
+    }
+
+    /* Hero Main Photo */
+    .hero-photo-wrapper {
+      position: relative;
+      width: 280px;
+      height: 350px;
+      margin: 0 auto 30px auto;
+      border-radius: 25px;
+      padding: 12px;
+      background: white;
+      box-shadow: var(--shadow);
+      transform: rotate(-2deg);
+      transition: all 0.4s ease;
+    }
+
+    .hero-photo-wrapper:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    .hero-photo-badge {
+      position: absolute;
+      bottom: -15px;
+      right: -15px;
+      background: #ffffff;
+      padding: 10px 18px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      color: #ff477e;
+      transform: rotate(5deg);
+    }
+
+    /* Countdown Section */
+    .countdown-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 25px;
+      margin: 30px auto;
+      max-width: 650px;
+      box-shadow: var(--shadow);
+      border: 2px solid #ffffff;
+      text-align: center;
+    }
+
+    .countdown-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: #7209b7;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .time-box {
+      background: #fff0f3;
+      padding: 12px;
+      border-radius: 15px;
+      min-width: 80px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .time-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ff477e;
+    }
+
+    .time-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      font-weight: 600;
+    }
+
+    /* Cake Blow Candle Section */
+    .cake-section {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .cake-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    .cake-icon {
+      font-size: 7rem;
+      color: #ff85a1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 10px 15px rgba(255, 133, 161, 0.4));
+    }
+
+    .candles {
+      position: absolute;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 3;
+    }
+
+    .flame {
+      width: 14px;
+      height: 22px;
+      background: #ffb703;
+      border-radius: 50% 50% 20% 20%;
+      box-shadow: 0 0 15px #ffb703, 0 0 25px #fb8500;
+      animation: flicker 0.6s infinite alternate;
+      cursor: pointer;
+    }
+
+    .flame.off {
+      display: none;
+    }
+
+    @keyframes flicker {
+      0% { transform: scale(1) rotate(-2deg); }
+      100% { transform: scale(1.15) rotate(2deg); }
+    }
+
+    .blow-btn {
+      background: linear-gradient(45deg, #ff477e, #ff85a1);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 71, 126, 0.4);
+      transition: all 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .blow-btn:hover {
+      transform: translateY(-2deg);
+      box-shadow: 0 8px 20px rgba(255, 71, 126, 0.6);
+    }
+
+    /* Memory Gallery */
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #4a3e3d;
+      margin: 50px 0 30px 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 10px;
+    }
+
+    .gallery-item {
+      background: white;
+      padding: 12px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8deg) rotate(1deg);
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .gallery-caption {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      color: #ff477e;
+    }
+
+    /* Envelope & Love Letter */
+    .letter-section {
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .envelope-wrapper {
+      background: white;
+      max-width: 650px;
+      margin: 0 auto;
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+      border: 3px dashed var(--soft-pink);
+    }
+
+    .letter-content {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.8;
+      font-size: 1.05rem;
+      color: #333;
+      text-align: left;
+    }
+
+    .letter-content h4 {
+      font-family: 'Caveat', cursive;
+      font-size: 2.2rem;
+      color: #ff477e;
+      margin-bottom: 15px;
+    }
+
+    .signature {
+      font-family: 'Caveat', cursive;
+      font-size: 1.8rem;
+      color: #ff477e;
+      margin-top: 25px;
+      text-align: right;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .main-title { font-size: 2.1rem; }
+      .hero-photo-wrapper { width: 230px; height: 300px; }
+      .countdown-timer { gap: 8px; }
+      .time-box { min-width: 65px; padding: 8px; }
+      .time-number { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="heartCanvas"></canvas>
+
+  <div class="container">
+    
+    <!-- Hero Header Section -->
+    <header class="hero">
+      <div class="badge-sweet16">✨ Sweet Sixteen ✨</div>
+      <h1 class="main-title">Happy Birthday,<br>Aulia Zahra Putri Lesmana 💕</h1>
+      <p class="subtitle">Celebrating 16 incredible years of your sweetness, smile, and bright presence.</p>
+
+      <div class="hero-photo-wrapper">
+        <img src="389532.jpg" alt="Aulia Zahra" class="hero-photo" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500';">
+        <div class="hero-photo-badge">The Birthday Girl ✨</div>
+      </div>
+    </header>
+
+    <!-- Countdown Timer Section -->
+    <section class="countdown-card">
+      <h3><i class="fa-solid fa-hourglass-half"></i> Countdown to Your Special Day</h3>
+      <div class="countdown-timer" id="countdown">
+        <div class="time-box">
+          <div class="time-number" id="days">00</div>
+          <div class="time-label">Days</div>
+        </div>
+        <div class="time-box">
+          <div class="time-number" id="hours">00</div>
+          <div class="time-label">Hours</div>
+        </div>
+        <div class="time-box">
+          <div class="time-number" id="minutes">00</div>
+          <div class="time-label">Minutes</div>
+        </div>
+        <div class="time-box">
+          <div class="time-number" id="seconds">00</div>
+          <div class="time-label">Seconds</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Birthday Cake -->
+    <section class="cake-section">
+      <div class="cake-container" onclick="blowCandles()">
+        <div class="candles">
+          <div class="flame"></div>
+          <div class="flame"></div>
+          <div class="flame"></div>
+        </div>
+        <i class="fa-solid fa-cake-candles cake-icon"></i>
+      </div>
+      <button class="blow-btn" onclick="blowCandles()">Make a Wish & Blow Candles 🕯️</button>
+    </section>
+
+    <!-- Photobooth Memories Gallery -->
+    <section>
+      <h2 class="section-title"> Our Photobooth Memories Gallery 📸</h2>
+      <div class="gallery-grid">
+        
+        <div class="gallery-item">
+          <img src="387295.jpg" class="gallery-img" alt="Prayer pose photobooth" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500';">
+          <p class="gallery-caption">Prayers & Wishes Together 🙏</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="387280.jpg" class="gallery-img" alt="Classic couple photobooth" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500';">
+          <p class="gallery-caption">Side by Side with You 💖</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="387265.jpg" class="gallery-img" alt="Funny expressions photobooth" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500';">
+          <p class="gallery-caption">Silly Moments & Pure Joy 🤪</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="387282.jpg" class="gallery-img" alt="Photostrip prints" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500';">
+          <p class="gallery-caption">Captured Memories Strips 🎞️</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Heartfelt Birthday Love Letter -->
+    <section class="letter-section">
+      <div class="envelope-wrapper">
+        <div class="letter-content">
+          <h4>Dearest Aulia Zahra Putri Lesmana,</h4>
+          <p>
+            Happy 16th Birthday! Turning sixteen is such a special milestone, and I feel so grateful and blessed to share this journey with you. 
+          </p>
+          <br>
+          <p>
+            Thank you for bringing so much warmth, laughter, and happiness into my life. From your sweet smile to your funny cute faces in our photobooth photos, every single moment with you is something I treasure deeply.
+          </p>
+          <br>
+          <p>
+            May your 16th year be filled with boundless happiness, success in everything you dream of, peace, and endless love. Always stay as wonderful and inspiring as you are.
+          </p>
+          <div class="signature">With all my love ❤️</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Crafted with ❤️ for Aulia Zahra Putri Lesmana's 16th Birthday.
+    </footer>
+
+  </div>
+
+  <script>
+    // Confetti Effect on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    });
+
+    // Countdown Timer logic
+    function updateCountdown() {
+      const now = new Date();
+      let targetYear = now.getFullYear();
+      let targetDate = new Date(`October 20, ${targetYear} 00:00:00`);
+
+      if (now > targetDate) {
+        targetDate = new Date(`October 20, ${targetYear + 1} 00:00:00`);
+      }
+
+      const diff = targetDate - now;
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = d < 10 ? '0' + d : d;
+      document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+      document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+      document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Blow Candle Functionality
+    function blowCandles() {
+      const flames = document.querySelectorAll('.flame');
+      flames.forEach(flame => flame.classList.add('off'));
+      
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.5 }
+      });
+
+      alert('✨ Happy 16th Birthday Aulia! May all your wishes come true! ✨');
+    }
+
+    // Canvas Floating Hearts Background
+    const canvas = document.getElementById('heartCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Heart {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * 100;
+        this.size = Math.random() * 12 + 8;
+        this.speedY = Math.random() * 1.5 + 0.5;
+        this.opacity = Math.random() * 0.5 + 0.3;
+      }
+
+      update() {
+        this.y -= this.speedY;
+        if (this.y < -20) this.reset();
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = '#ff85a1';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size / 2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    const hearts = Array.from({ length: 30 }, () => new Heart());
+
+    function animateHearts() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hearts.forEach(heart => {
+        heart.update();
+        heart.draw();
+      });
+      requestAnimationFrame(animateHearts);
+    }
+    animateHearts();
+  </script>
+</body>
+</html>
